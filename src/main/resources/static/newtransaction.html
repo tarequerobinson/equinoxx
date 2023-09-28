@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Equinoxx</title>
+  <link rel="icon" href="\Equinoxx webbrowser Logo.png">
+
+
+
+
+
+
+
+
+<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			height: 100vh;
+		}
+		
+		.sidebar {
+			flex: 0 0 200px;
+			background-color: black;
+			color: #fff;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		
+		.sidebar a {
+			display: block;
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			transition: all 0.3s ease;
+		}
+		
+	.sidebar a:hover {
+			background-color: #48A70B;
+			color: #ffff;
+		}
+		
+		.content {
+			flex: 1; 
+			background-color: #eee;
+			padding: 20px;
+			box-sizing: border-box;
+   
+			
+		
+      }
+		
+		
+		h1 {
+			margin-top: 0;
+		}
+		
+		img {
+        width: 70%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+     
+		
+		
+		
+		
+				.formcontainer{
+				
+				background:white;
+				border-radius:15px;
+				width: 700px;
+				
+				}
+				
+				
+				form {
+		  display: flex;
+		  flex-direction: column;
+		  align-items: flex-start;
+		  max-width: 500px;
+		  margin: 0 auto;
+		  padding:20px;
+		 
+		}
+		
+		label {
+		  margin-bottom: 5px;
+		}
+		
+		input, select {
+		  padding: 5px;
+		  margin-bottom: 10px;
+		  border: 1px solid #ccc;
+		  border-radius: 5px;
+		  font-size: 1rem;
+		  width: 100%;
+		}
+		
+		button {
+		  padding: 10px;
+		  background-color: #008CBA;
+		  color: #fff;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		  font-size: 1rem;
+		   justify-items:center;
+		  align-items:center;
+		}
+		
+		button:hover {
+		  background-color: #005f75;
+		}
+				
+				
+		</style>
+<body>
+
+
+
+
+
+<div class="container">
+		<div class="sidebar">
+			<img src="\Equinoxx Logo.png">
+			
+        <a href = "/api/news/rss">Overview</a>
+        			<a href="newtransaction.html">New Transaction</a>
+        
+                <a href = "analytics.html">Analytics</a>
+                <a href = "marketupdates.html">Market Updates</a>
+                
+        
+			<a href="settings.html">Settings</a>
+			  <a href="/logout">Logout</a>
+			
+		</div>
+		<div class="content">
+		
+		<div class = "formcontainer">
+		
+		<form method="POST" action="/api/orders/createNewOrder">
+  <label for="order_date">Order Date:</label>
+  <input type="date" id="order_date" name="orderDate" required>
+
+  <label for="equity_order_number">Equity Order Number:</label>
+  <input type="number" id="equity_order_number" name="equityOrderNumber" required>
+
+  <label for="status">Status:</label>
+  <select id="status" name="status" required>
+    <option value="">Select Status</option>
+    <option value="open">Open</option>
+    <option value="filled">Filled</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+
+  <label for="C">Stock Exchange Symbol:</label>
+    <select id="  <select id="stockExchangCode" name="stockExchangCode" required>
+    <option value="">Select Stock Exchange Symbol</option>
+    <option value="open">JSE</option>
+    <option value="open">JNR</option>
+    </select>
+
+  
+
+  <label for="currency">Currency:</label>
+  <select id="currency" name="currency" required>
+       <option value="open">Currency</option>
+  
+      <option value="open">JMD</option>
+      <option value="open">USD</option>
+  </select>
+  
+
+  <label for="equity_symbol">Equity Symbol:</label>
+    <select id="stockSymbol" name="stockSymbol" required>
+    <option value="open">Select Equity Symbol</option>
+    <option value="open">JMMBGL</option>
+    <option value="open">MPC</option>
+    <option value="open">MEEG</option>
+    <option value="open">CCC</option>
+    <option value="open">TJH</option>
+    <option value="open">FESCO</option>
+    <option value="open">MTL</option>
+    <option value="open">SEP</option>
+  	<option value="open">JMMBGL</option>
+    <option value="open">MPC</option>
+    <option value="open">MEEG</option>
+    <option value="open">CCC</option>
+    <option value="open">TJH</option>
+    <option value="open">FESCO</option>
+    <option value="open">MTL</option>
+    <option value="open">SEP</option>
+        
+    </select>
+  
+
+<!--   <label for="order_type">Order Type:</label>
+  <select id="order_type" name="transactinType" required>
+    <option value="">Select Order Type</option>
+    <option value="buy">Buy</option>
+    <option value="sell">Sell</option>
+  </select>
+ -->
+  <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" name="quantity" min="1" required>
+
+  <label for="average">Average:</label>
+  <input type="number" id="average" name="avgFillPrice" min="0" step="0.01" required>
+
+  <label for="estimate">Estimate:</label>
+  <input type="number" id="estimate" name="estimatedValue" min="0" step="0.01" required>
+
+  <label for="time_in_force">Time In Force:</label>
+  <select id="time_in_force" name="timeInForce" required>
+    <option value="">Select Time In Force</option>
+    <option value="day">Day</option>
+    <option value="gtc">Good-Til-Cancelled</option>
+    <option value="ext">Extended Hours</option>
+  </select>
+
+  <label for="orderType">Order Type:</label>
+  <select id="orderType" name="orderType" required>
+    <option value="">Select Order Type</option>
+    <option value="buy">BUY</option>
+    <option value="sell">SELL</option>
+  </select>
+
+  <label for="limit_price">Limit Price:</label>
+  <input type="number" id="limit_price" name="limitPrice" min="0" step="0.01" required>
+
+  <button type="submit">Add Order</button>
+</form>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		</div>
+		</div>
+
+</body>
+</html>

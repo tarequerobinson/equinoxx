@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title> Equinoxx Sign Up</title>
+
+        <link rel="stylesheet" href="/signup.css">
+
+</head>
+<body>
+
+<div class = "center">
+<h1> Sign Up</h1>
+
+
+
+<form action=/api/users/createNewUser method=post> 
+	<div class = "textField">
+		<input type = "text" name ="firstName" required> 
+		<label>First Name</label>
+	</div>	
+	
+	<div class = "textField">
+		<input type = "text" name ="lastName" required> 
+		<label>Last Name</label>
+	</div>	
+	
+		<div class = "textField">
+		<input type = "text" name ="userName" required> 
+		<label>UserName</label>
+	</div>	
+
+	<div class = "textField">		
+		<input type = "password" name ="password" required> 
+		<label>Password</label>
+	</div>
+	
+
+	<div class = "textField">		
+		<input type = "text" name ="email" required> 
+		<label>Email Address</label>
+	</div>
+	
+	<!-- <div class = "textField">		
+		<input type = "text" name ="user_id" required> 
+		<label>USER ID TEMP</label>
+	</div> -->
+	
+	<div class = "textField">		
+		<input type = "text" name ="roles" required> 
+		<label>ROLES</label>
+	</div>
+	
+	<div class = "signupbutton">
+		<input type = "submit" value ="Sign Up">
+		</div>
+		
+		</form>
+
+
+
+
+ </div>
+
+
+</body>
+</html>

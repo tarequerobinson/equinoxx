@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Market Updates</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+	}
+
+	th,
+	td {
+	padding: 0.75rem;
+	text-align: left;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+	}
+
+	thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
+	}
+
+	tbody tr:nth-of-type(even) {
+	background-color: #f8f9fa;
+	}
+
+	tbody td {
+	border-top: none;
+	}
+	
+
+	img {
+        width: 70%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			height: 100vh;
+		}
+		
+		.sidebar {
+			flex: 0 0 200px;
+			background-color: black;
+			color: #fff;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		
+		.sidebar a {
+			display: block;
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			transition: all 0.3s ease;
+		}
+		
+	.sidebar a:hover {
+			background-color: #48A70B;
+			color: #ffff;
+		}
+		
+		.content {
+			flex: 1; 
+			background-color: #eee;
+			padding: 20px;
+			box-sizing: border-box;
+      }
+      
+      .loader{
+      
+      height:100vh;
+      width:100vw;
+      overflow:hidden;
+      background-color: #eee;
+    position :absolute;
+    
+      }
+      
+            .loader>div{
+            height:100px;
+            width:100px;
+            border:15px solid grey;
+            border-top-color:green;
+                position :absolute;
+                margin:auto;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                border-radius:-50%;
+                animation:spin 1.5s infinite linear;
+            }
+            
+            @keyframes spin{
+            100%
+            {
+            transform: rotate (360deg);
+            }
+
+            }
+      
+
+      
+		</style>
+</head>
+
+
+<body>
+
+
+
+
+
+
+<div class="container">
+		<div class="sidebar">
+			<img src="\Equinoxx Logo.png">
+			
+			
+        <a href = "/api/news/rss">Overview</a>
+        			<a href="/newtransaction">New Transaction</a>
+        
+                <a href = "/analyticsPage">Analytics</a>
+                <a href = "/marketupdates">Market Updates</a>
+                
+        
+			<a href="settings.html">Settings</a>
+			  <a href="/logout">Logout</a>
+			
+		</div>
+		
+		
+		<div class = "loader">
+		<div>
+		</div>
+      </div> 
+		<div class = "content">
+		
+		<div class = "marketTable">
+				<table id="marketPrices_table">
+				<tr>
+		            <th>Stock </th>
+		            <th>Closing Price</th>
+		            </tr>
+				
+				</table>
+				</div>
+		
+		</div>
+		</div>
+		
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $.get("api/orders/marketprices", function(data) {
+    	
+    	console.log(data);  
+        var marketPrices = data;
+        var tbody = $("#marketPrices_table tbody");
+        for (var i = 0; i < marketPrices.length; i++) {
+        	console.log(marketPrices[i]);  
+            var marketPrice = marketPrices[i];
+            var row = "<tr><td>" + marketPrice.stock + "</td><td>" + marketPrice.closingPrice +"</td></tr>";
+            tbody.append(row);
+        }
+    }).done(function() {
+        console.log("Data received successfully!");
+    }).fail(function() {
+        console.log("Error fetching data!");
+    });
+});
+
+
+
+
+
+</script>
+
+
+<script>
+
+	$(window).on('load',function(){
+		
+		$(".loader").fadeOut(1000);
+		$(".content").fadeIn(1000);
+
+	});
+
+
+
+</script>
+
+</body>
+</html>
